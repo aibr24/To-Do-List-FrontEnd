@@ -2,9 +2,13 @@ import React from "react";
 import Modal from "react-modal";
 import { ModalStyle, CreateButtonStyled } from "./styles";
 
+//store
+import taskStore from "../../stores/taskStore";
+
 const TaskModal = ({ isOpen, closeModal }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
+    taskStore.addTask(event.target.name.value);
     closeModal();
   };
 
