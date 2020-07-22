@@ -17,3 +17,21 @@ export const NewTaskButtonStyled = styled.button`
     cursor: pointer;
   }
 `;
+
+export const DeleteTaskButtonStyled = styled.button`
+  color: red;
+  border: 0px;
+  display: block;
+  margin-left: auto;
+  margin-right: 20px;
+
+  float: right;
+  background-color: white;
+  font-size: xx-large;
+  :hover {
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+`;

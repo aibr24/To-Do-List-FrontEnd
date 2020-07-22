@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IconContext } from "react-icons";
+import { DeleteTaskButtonStyled } from "../buttons/styles";
 
 //Styles
 import {
@@ -21,11 +22,15 @@ const TaskItem = ({ task }) => {
           <checkButton
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            onClick={() => taskStore.handleDelete(task)}
+            onClick={() => taskStore.handleUpdate(task)}
           >
             {hover ? (
               <IconContext.Provider
-                value={{ size: "3em", className: "global-class-name" }}
+                value={{
+                  color: "blue",
+                  size: "3em",
+                  className: "global-class-name",
+                }}
               >
                 <GrCheckboxSelectedStyled />
               </IconContext.Provider>
@@ -38,6 +43,9 @@ const TaskItem = ({ task }) => {
             )}
           </checkButton>
           <h2>{task.name}</h2>
+          <DeleteTaskButtonStyled onClick={() => taskStore.handleDelete(task)}>
+            Delete
+          </DeleteTaskButtonStyled>
         </div>
       </TaskBorder>
     </>

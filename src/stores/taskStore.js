@@ -24,15 +24,24 @@ class TaskStore {
     }
   };
 
+  handleUpdate = async (task) => {
+    try {
+      await axios.put(`http://localhost:8000/${task.id}`);
+      task.done = !task.done;
+    } catch (error) {
+      console.error("TaskStore -> handleUpdate-> error", error);
+    }
+  };
   handleDelete = async (task) => {
     try {
-      await axios.put("http://localhost:8000/", task);
+      await axios.put(`http://localhost:8000/delete/${task.id}`);
       this.tasks = this.tasks.filter((tasks) => tasks.id !== task.id);
     } catch (error) {
       console.error("TaskStore -> handleDelete -> error", error);
     }
   };
 }
+
 decorate(TaskStore, { tasks: observable });
 
 const taskStore = new TaskStore();
